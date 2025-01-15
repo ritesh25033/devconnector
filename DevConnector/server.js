@@ -11,7 +11,7 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 //app.get('/',(req,res)=> res.send('API RUNNING'))
-app.use('testing', () => {
+app.use('/testing', () => {
   console.log('This is a test route');
 });
 app.use('/api/users', require('./routes/api/users'));
