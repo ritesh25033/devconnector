@@ -25,44 +25,44 @@ export const getCurrentProfile = () => async (dispatch) => {
   }
 };
 
-// export const getProfiles = () => async dispatch => {
-//   dispatch({ type: CLEAR_PROFILE });
-
-//   try {
-//     const res = await axios.get("/api/profile");
-//     dispatch({
-//       type: GET_PROFILES,
-//       payload: res.data,
-//     });
-//   } catch (err) {
-//     dispatch({
-//       type: PROFILE_ERROR,
-//       payload: { msg: err.response.statusText, status: err.response.status },
-//     });
-//   }
-// };
-
 export const getProfiles = () => async (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
 
   try {
     const res = await axios.get('/api/profile');
-
     dispatch({
       type: GET_PROFILES,
       payload: res.data,
     });
   } catch (err) {
-    console.error('Error fetching profiles:', err); // Debugging info
     dispatch({
       type: PROFILE_ERROR,
-      payload: {
-        msg: err.response?.statusText || 'Server Error',
-        status: err.response?.status || 500,
-      },
+      payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
+
+// export const getProfiles = () => async (dispatch) => {
+//   dispatch({ type: CLEAR_PROFILE });
+
+//   try {
+//     const res = await axios.get('/api/profile');
+
+//     dispatch({
+//       type: GET_PROFILES,
+//       payload: res.data,
+//     });
+//   } catch (err) {
+//     console.error('Error fetching profiles:', err); // Debugging info
+//     dispatch({
+//       type: PROFILE_ERROR,
+//       payload: {
+//         msg: err.response?.statusText || 'Server Error',
+//         status: err.response?.status || 500,
+//       },
+//     });
+//   }
+// };
 
 export const getProfileById = (userId) => async (dispatch) => {
   try {
